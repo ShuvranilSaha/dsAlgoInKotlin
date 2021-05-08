@@ -4,7 +4,9 @@ import Node
 
 class LinkedListIterator<T>(private val list: LinkedList<T>) : Iterator<T>, MutableIterator<T> {
     private var index = 0
+
     private var lastNode: Node<T>? = null
+
     override fun hasNext(): Boolean {
         return index < list.size
     }

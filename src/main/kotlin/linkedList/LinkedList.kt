@@ -4,8 +4,11 @@ import Node
 
 class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCollection<T> {
     private var head: Node<T>? = null
+
     private var tail: Node<T>? = null
+
     override var size = 0
+
     override fun iterator(): MutableIterator<T> {
         return LinkedListIterator(this)
     }
@@ -83,7 +86,7 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCol
         return this
     }
 
-    fun append(value: T) {
+    private fun append(value: T) {
         // 1
         /* Like before, if the list is empty, you’ll need to update both head and tail to the
            new node. Since append on an empty list is functionally identical to push , you
@@ -148,7 +151,7 @@ you just created. */
 
     fun removeLast(): T? {
         // If head is null , there’s nothing to remove, so you return null .
-        val head = head ?: null
+        val head = head
         /* If the list only consists of one node, removeLast is functionally equivalent to
            pop . Since pop will handle updating the head and tail references, you can
            delegate this work to the pop function.
@@ -205,5 +208,11 @@ you just created. */
                 return false
         }
         return true
+    }
+
+    // challenge for linkedList
+    // 1: reverse a linkedList
+    fun printInReverse() {
+        this.insertNodeAt(0)?.printInReverse()
     }
 }

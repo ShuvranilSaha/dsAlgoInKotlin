@@ -1,6 +1,6 @@
 import linkedList.LinkedList
 
-fun main(args: Array<String>) {
+fun main() {
     // node test
     val node1 = Node(value = 1)
     val node2 = Node(value = 2)
@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     println(node1)
 
     // linkedList test
-    var list = LinkedList<Int>()
+    val list = LinkedList<Int>()
     list.push(3).push(2).push(1)
     println(" Before inserting $list")
 
@@ -82,4 +82,14 @@ fun main(args: Array<String>) {
     println(list5)
     list5.removeAll(listOf(3, 4, 5))
     println(list5)
+
+    val list6 = LinkedList<Int>()
+    list6.add(3)
+    list6.add(2)
+    list6.add(1)
+    list6.add(4)
+    list6.add(5)
+
+    println(list6)
+    list6.printInReverse()
 }
