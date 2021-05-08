@@ -215,4 +215,19 @@ you just created. */
     fun printInReverse() {
         this.insertNodeAt(0)?.printInReverse()
     }
+
+    // 2: finding item in middle
+    fun getMiddle(): Node<T>? {
+        var slow = this.insertNodeAt(0)
+        var fast = this.insertNodeAt(0)
+
+        while (fast != null) {
+            fast = fast.next
+            if (fast != null) {
+                fast = fast.next
+                slow = slow?.next
+            }
+        }
+        return slow
+    }
 }

@@ -92,4 +92,14 @@ fun main() {
 
     println(list6)
     list6.printInReverse()
+
+    val list7 = LinkedList<Int>()
+    list7.add(3)
+    list7.add(2)
+    list7.add(1)
+    list7.add(4)
+    list7.add(5)
+
+    println(list7)
+    println(list7.getMiddle()?.value)
 }
