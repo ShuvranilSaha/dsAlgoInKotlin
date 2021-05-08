@@ -80,7 +80,7 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCol
     fun push(value: T): LinkedList<T> {
         head = Node(value = value, next = head)
         if (tail == null) {
-            tail = head;
+            tail = head
         }
         size++
         return this
@@ -211,6 +211,7 @@ you just created. */
     }
 
     // challenge for linkedList
+
     // 1: reverse a linkedList
     fun printInReverse() {
         this.insertNodeAt(0)?.printInReverse()
@@ -229,5 +230,23 @@ you just created. */
             }
         }
         return slow
+    }
+
+    // 3: recursive reverse a linkedList
+    private fun <T> addInReverse(list: LinkedList<T>, node: Node<T>) {
+        val next = node.next
+        if (next != null) {
+            addInReverse(list, next)
+        }
+        list.append(node.value)
+    }
+
+    fun <T> LinkedList<T>.reversed(): LinkedList<T> {
+        val result = LinkedList<T>()
+        val head = this.insertNodeAt(0)
+        if (head != null) {
+            addInReverse(result, head)
+        }
+        return result
     }
 }
