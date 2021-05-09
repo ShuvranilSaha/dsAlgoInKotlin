@@ -102,4 +102,22 @@ fun main() {
 
     println(list7)
     println(list7.getMiddle()?.value)
+
+    val list8 = LinkedList<Int>()
+    list8.add(1)
+    list8.add(2)
+    list8.add(3)
+    list8.add(4)
+    list8.add(5)
+
+    val other = LinkedList<Int>()
+    other.add(-1)
+    other.add(0)
+    other.add(2)
+    other.add(2)
+    other.add(7)
+
+    println("Left: $list8")
+    println("Right: $other")
+    println("Merged: ${list8.mergeSorted(other)}")
 }
