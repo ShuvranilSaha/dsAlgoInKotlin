@@ -1,5 +1,6 @@
 import linkedList.LinkedList
 import linkedList.Node
+import stack.StackImpl
 
 fun main() {
     // node test
@@ -103,4 +104,17 @@ fun main() {
 
     println(list7)
     println(list7.getMiddle()?.value)
+
+    val stack = StackImpl<Int>().apply {
+        push(1)
+        push(2)
+        push(3)
+        push(4)
+    }
+    print(stack)
+    val poppedElement = stack.pop()
+    if (poppedElement != null) {
+        println("popped:  $poppedElement")
+    }
+    print(stack)
 }
