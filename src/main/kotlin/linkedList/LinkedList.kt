@@ -1,7 +1,5 @@
 package linkedList
 
-import Node
-
 class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCollection<T> {
     private var head: Node<T>? = null
 
