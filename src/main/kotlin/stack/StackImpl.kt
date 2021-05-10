@@ -1,7 +1,9 @@
 package stack
 
-class StackImpl<T : Any> : Stack<T> {
-    private val storage = arrayListOf<T>()
+import java.util.*
+
+class StackImpl<Element : Any> : Stack<Element> {
+    private val storage = arrayListOf<Element>()
 
     override fun toString() = buildString {
         appendLine("------top----")
@@ -11,18 +13,18 @@ class StackImpl<T : Any> : Stack<T> {
         appendLine("--------")
     }
 
-    override fun push(element: T) {
+    override fun push(element: Element) {
         storage.add(element)
     }
 
-    override fun pop(): T? {
+    override fun pop(): Element? {
         if (isEmpty) {
             return null
         }
         return storage.removeAt(storage.size - 1)
     }
 
-    override fun peek(): T? {
+    override fun peek(): Element? {
         return storage.lastOrNull()
     }
 
@@ -30,8 +32,8 @@ class StackImpl<T : Any> : Stack<T> {
         get() = storage.size
 
     companion object {
-        fun <T : Any> create(items: Iterable<T>): Stack<T> {
-            val stack = StackImpl<T>()
+        fun <Element : Any> create(items: Iterable<Element>): Stack<Element> {
+            val stack = StackImpl<Element>()
             for (item in items) {
                 stack.push(item)
             }
@@ -39,4 +41,16 @@ class StackImpl<T : Any> : Stack<T> {
         }
     }
 
+    fun <T : Any> LinkedList<T>.printInReverse() {
+        val stack = StackImpl<T>()
+
+        for (node in this) {
+            stack.push(node)
+        }
+        var node = stack.pop()
+        while (node != null) {
+            println(node)
+            node = stack.pop()
+        }
+    }
 }
