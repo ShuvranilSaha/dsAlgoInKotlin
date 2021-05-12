@@ -2,6 +2,7 @@ import linkedList.LinkedList
 import linkedList.Node
 import queue.ArrayListQueue
 import queue.RingBufferQueue
+import queue.StackQueue
 import stack.StackImpl
 
 fun main() {
@@ -140,4 +141,14 @@ fun main() {
     queue1.dequeue()
     println(queue1)
     println("Next up: ${queue1.peek()}")
+
+    val queue3 = StackQueue<String>().apply {
+        enqueue("Prasenjit")
+        enqueue("Abhishek")
+        enqueue("Neil")
+    }
+    println(queue3)
+    queue3.dequeue()
+    println(queue3)
+    println("Next up: ${queue3.peek()}")
 }
