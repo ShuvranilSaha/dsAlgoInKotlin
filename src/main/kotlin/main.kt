@@ -27,7 +27,7 @@ fun main() {
     }
     println("After inserting $list")
 
-    val poppedValue = list.pop();
+    val poppedValue = list.pop()
     println("After popping list: $list")
     println("popped Value $poppedValue")
 
