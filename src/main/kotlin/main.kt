@@ -1,6 +1,7 @@
 import linkedList.LinkedList
 import linkedList.Node
 import queue.ArrayListQueue
+import queue.RingBufferQueue
 import stack.StackImpl
 
 fun main() {
@@ -125,7 +126,18 @@ fun main() {
         enqueue("Prasenjit")
     }
     println(queue)
-        queue.dequeue()
+    queue.dequeue()
     println(queue)
     println("Next up is ${queue.peek()}")
+
+    val queue1 = RingBufferQueue<String>(10).apply {
+        enqueue("Neil")
+        enqueue("Abhishek")
+        enqueue("Prasenjit")
+    }
+
+    println(queue1)
+    queue1.dequeue()
+    println(queue1)
+    println("Next up: ${queue1.peek()}")
 }
