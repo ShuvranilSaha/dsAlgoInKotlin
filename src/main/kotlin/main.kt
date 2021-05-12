@@ -1,5 +1,6 @@
 import linkedList.LinkedList
 import linkedList.Node
+import queue.ArrayListQueue
 import stack.StackImpl
 
 fun main() {
@@ -117,4 +118,14 @@ fun main() {
         println("popped:  $poppedElement")
     }
     print(stack)
+
+    val queue = ArrayListQueue<String>().apply {
+        enqueue("Neil")
+        enqueue("Abhishek")
+        enqueue("Prasenjit")
+    }
+    println(queue)
+        queue.dequeue()
+    println(queue)
+    println("Next up is ${queue.peek()}")
 }
