@@ -168,6 +168,16 @@ fun main() {
     print("---------------------")
     println()
     tree.forEachLevelOrder { println(it.value) }
+
+    print("--------------------")
+    println()
+    tree.search("ginger ale")?.let {
+        println("Found node: ${it.value}")
+    }
+    println()
+    tree.search("WKD blue")?.let {
+        println("Found node: ${it.value}")
+    } ?: println("could not find wkd blue")
 }
 
 fun makeBeverageTree(): TreeNode<String> {
