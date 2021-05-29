@@ -178,6 +178,8 @@ fun main() {
     tree.search("WKD blue")?.let {
         println("Found node: ${it.value}")
     } ?: println("could not find wkd blue")
+
+    tree.printEachLevel()
 }
 
 fun makeBeverageTree(): TreeNode<String> {
