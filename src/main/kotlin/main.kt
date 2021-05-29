@@ -4,6 +4,7 @@ import queue.ArrayListQueue
 import queue.RingBufferQueue
 import queue.StackQueue
 import stack.StackImpl
+import tree.TreeNode
 
 fun main() {
     // node test
@@ -108,6 +109,7 @@ fun main() {
     println(list7)
     println(list7.getMiddle()?.value)
 
+    // stack
     val stack = StackImpl<Int>().apply {
         push(1)
         push(2)
@@ -121,6 +123,7 @@ fun main() {
     }
     print(stack)
 
+    // queue
     val queue = ArrayListQueue<String>().apply {
         enqueue("Neil")
         enqueue("Abhishek")
@@ -151,4 +154,12 @@ fun main() {
     queue3.dequeue()
     println(queue3)
     println("Next up: ${queue3.peek()}")
+
+    // Tree
+    val hot = TreeNode("Hot")
+    val cold = TreeNode("cold")
+    TreeNode("Beverages").run {
+        add(hot)
+        add(cold)
+    }
 }
