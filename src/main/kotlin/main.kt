@@ -197,6 +197,19 @@ fun main() {
     nine.leftChild = eight
 
     println(seven)
+    seven.traverseInOrder {
+        println(it)
+    }
+    print("-------------------")
+    println()
+    seven.traversePreOrder {
+        println(it)
+    }
+    print("-------------------")
+    println()
+    seven.traversePostOrder {
+        println(it)
+    }
 }
 
 fun makeBeverageTree(): TreeNode<String> {
