@@ -210,6 +210,14 @@ fun main() {
     seven.traversePostOrder {
         println(it)
     }
+    println("---------------------")
+    println(seven.findHeight(seven))
+    println("---------------------")
+
+    println(seven)
+    val array = seven.serialize()
+    println(array)
+    println(seven.deserialize(array))
 }
 
 fun makeBeverageTree(): TreeNode<String> {

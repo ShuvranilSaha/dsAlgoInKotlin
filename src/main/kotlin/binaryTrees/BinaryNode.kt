@@ -1,5 +1,7 @@
 package binaryTrees
 
+import kotlin.math.max
+
 typealias Visitor<T> = (T) -> Unit
 
 class BinaryNode<T>(private val value: T) {
@@ -44,5 +46,38 @@ class BinaryNode<T>(private val value: T) {
                 )
             }
         } ?: "${root}null\n"
+    }
+
+    // challenge 1: find the height of the tree
+    fun findHeight(node: BinaryNode<T>? = this): Int {
+        return node?.let {
+            1 + max(findHeight(node.leftChild), findHeight(node.rightChild))
+        } ?: -1
+    }
+
+    // challenge 2: serialization of binaryTree
+    private fun traversePreOrderWithNull(visit: Visitor<T?>) {
+        visit(value)
+        leftChild?.traversePreOrderWithNull(visit) ?: visit(null)
+        rightChild?.traversePreOrderWithNull(visit) ?: visit(null)
+    }
+
+    fun serialize(node: BinaryNode<T>? = this): MutableList<T?> {
+        val list = mutableListOf<T?>()
+        node?.traversePreOrderWithNull {
+            list.add(it)
+        }
+        return list
+    }
+
+    // deserialize with timeComplexity O(n2)
+    fun deserialize(list: MutableList<T?>): BinaryNode<T?>? {
+        // 1
+        val rootValue = list.removeAt(0) ?: return null
+        // 2
+        val root = BinaryNode<T?>(rootValue)
+        root.leftChild = deserialize(list)
+        root.rightChild = deserialize(list)
+        return root
     }
 }
