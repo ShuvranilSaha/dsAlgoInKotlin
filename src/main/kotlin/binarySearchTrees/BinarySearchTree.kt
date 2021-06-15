@@ -20,4 +20,16 @@ class BinarySearchTree<T : Comparable<T>>() {
         }
         return node
     }
+
+    // finding element
+    fun contains(value: T): Boolean {
+        root ?: return false
+        var found = false
+        root?.traverseInOrder {
+            if (value == it) {
+                found = true
+            }
+        }
+        return found
+    }
 }

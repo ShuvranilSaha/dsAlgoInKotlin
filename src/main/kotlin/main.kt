@@ -240,6 +240,12 @@ fun main() {
     }
     println("building Bst")
     println(exampleTree)
+
+    if (exampleTree.contains(5)) {
+        println("found")
+    } else {
+        println("not found")
+    }
 }
 
 fun makeBeverageTree(): TreeNode<String> {
