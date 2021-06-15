@@ -32,4 +32,26 @@ class BinarySearchTree<T : Comparable<T>>() {
         }
         return found
     }
+    /*
+    1. Start by setting current to the root node.
+    2. While current is not null , check the current node’s value.
+    3. If the value is equal to what you’re trying to find, return true .
+    4. Otherwise, decide whether you’re going to check the left or right child.
+     */
+
+    // optimized finding element
+    fun optimizedContains(value: T): Boolean {
+        var current = root
+        while (current != null) {
+            if (current.value == value) {
+                return true
+            }
+            current = if (value < current.value) {
+                current.leftChild
+            } else {
+                current.rightChild
+            }
+        }
+        return false
+    }
 }
