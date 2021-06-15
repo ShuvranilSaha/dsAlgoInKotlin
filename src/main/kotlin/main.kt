@@ -1,3 +1,4 @@
+import binarySearchTrees.BinarySearchTree
 import binaryTrees.BinaryNode
 import linkedList.LinkedList
 import linkedList.Node
@@ -47,11 +48,11 @@ fun main() {
     println("After removing index $index: $list")
     println("particular removed value $removedParticular")
 
-    val list2 = LinkedList<Int>()
-    list2.push(3)
-    list2.push(2)
-    list2.push(1)
-
+    val list2 = LinkedList<Int>().apply {
+        push(3)
+        push(2)
+        push(1)
+    }
     println(list2)
 
     for (item in list2) {
@@ -59,32 +60,34 @@ fun main() {
     }
 
 
-    val list3: MutableCollection<Int> = LinkedList()
-    list3.add(3)
-    list3.add(2)
-    list3.add(1)
-
+    val list3: MutableCollection<Int> = LinkedList<Int>().apply {
+        add(3)
+        add(2)
+        add(1)
+    }
     println(list3)
     list3.remove(1)
     println(list3)
 
-    val list4: MutableCollection<Int> = LinkedList()
-    list4.add(3)
-    list4.add(2)
-    list4.add(1)
-    list4.add(4)
-    list4.add(5)
+    val list4: MutableCollection<Int> = LinkedList<Int>().apply {
+        add(3)
+        add(2)
+        add(1)
+        add(4)
+        add(5)
+    }
 
     println(list4)
     list4.retainAll(listOf(3, 4, 5))
     println(list4)
 
-    val list5: MutableCollection<Int> = LinkedList()
-    list5.add(3)
-    list5.add(2)
-    list5.add(1)
-    list5.add(4)
-    list5.add(5)
+    val list5: MutableCollection<Int> = LinkedList<Int>().apply {
+        add(3)
+        add(2)
+        add(1)
+        add(4)
+        add(5)
+    }
 
     println(list5)
     list5.removeAll(listOf(3, 4, 5))
@@ -100,12 +103,13 @@ fun main() {
     println(list6)
     list6.printInReverse()
 
-    val list7 = LinkedList<Int>()
-    list7.add(3)
-    list7.add(2)
-    list7.add(1)
-    list7.add(4)
-    list7.add(5)
+    val list7 = LinkedList<Int>().apply {
+        add(3)
+        add(2)
+        add(1)
+        add(4)
+        add(5)
+    }
 
     println(list7)
     println(list7.getMiddle()?.value)
@@ -218,6 +222,24 @@ fun main() {
     val array = seven.serialize()
     println(array)
     println(seven.deserialize(array))
+
+    // BinarySearchTree
+    val bst = BinarySearchTree<Int>()
+    (0..4).forEach {
+        bst.insert(it)
+    }
+    println(bst)
+
+    val exampleTree = BinarySearchTree<Int>().apply {
+        insert(3)
+        insert(1)
+        insert(4)
+        insert(0)
+        insert(2)
+        insert(5)
+    }
+    println("building Bst")
+    println(exampleTree)
 }
 
 fun makeBeverageTree(): TreeNode<String> {

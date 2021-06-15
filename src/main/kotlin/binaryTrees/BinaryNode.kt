@@ -4,7 +4,7 @@ import kotlin.math.max
 
 typealias Visitor<T> = (T) -> Unit
 
-class BinaryNode<T>(private val value: T) {
+class BinaryNode<T>(val value: T) {
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
 
