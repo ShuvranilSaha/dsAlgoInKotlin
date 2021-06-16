@@ -246,6 +246,12 @@ fun main() {
     } else {
         println("not found")
     }
+
+    println("Tree before removal")
+    println(exampleTree)
+    exampleTree.remove(3)
+    println("after removal")
+    println(exampleTree)
 }
 
 fun makeBeverageTree(): TreeNode<String> {

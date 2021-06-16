@@ -54,4 +54,36 @@ class BinarySearchTree<T : Comparable<T>>() {
         }
         return false
     }
+
+    // remove a value from tree
+    fun remove(value: T) {
+        root = remove(root, value)
+    }
+
+    private fun remove(node: BinaryNode<T>?, value: T): BinaryNode<T>? {
+
+        if (node?.leftChild == null && node?.rightChild == null) {
+            return null
+        }
+        if (node.leftChild == null) {
+            return node.rightChild
+        }
+        if (node.rightChild == null) {
+            return node.leftChild
+        }
+        node.rightChild?.min?.value?.let {
+            node.value = it
+        }
+        node.rightChild = remove(node.rightChild, node.value)
+
+//        node ?: return null
+//        when {
+//            value == node.value -> {
+//                // more to come
+//            }
+//            value < node.value -> node.leftChild = remove(node.leftChild, value)
+//            else -> node.rightChild = remove(node.rightChild, value)
+//        }
+        return node
+    }
 }

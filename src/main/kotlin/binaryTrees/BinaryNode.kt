@@ -4,7 +4,7 @@ import kotlin.math.max
 
 typealias Visitor<T> = (T) -> Unit
 
-class BinaryNode<T>(val value: T) {
+class BinaryNode<T>(var value: T) {
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
 
@@ -80,4 +80,8 @@ class BinaryNode<T>(val value: T) {
         root.rightChild = deserialize(list)
         return root
     }
+
+    // fin min node in a tree
+    val min: BinaryNode<T>
+        get() = leftChild?.min ?: this
 }
