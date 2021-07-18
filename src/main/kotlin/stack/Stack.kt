@@ -1,7 +1,5 @@
 package stack
 
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 interface Stack<Element> {
     fun push(element: Element)
     fun pop(): Element?
