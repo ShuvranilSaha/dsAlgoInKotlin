@@ -3,10 +3,14 @@ package avlTree
 import kotlin.math.max
 
 
-class AVLTree<T: Comparable<T>> {
-    private var root : AVLNode<T>? = null
+class AVLTree<T : Comparable<T>> {
+    private var root: AVLNode<T>? = null
     fun insert(value: T) {
         root = insert(root, value)
+    }
+
+    fun remove(value: T) {
+        root = root?.let { remove(it, value) }
     }
 
     override fun toString() = root?.toString() ?: "empty tree"
@@ -63,7 +67,7 @@ class AVLTree<T: Comparable<T>> {
         }
     }
 
-    private fun insert(node: AVLNode<T>?, value: T): AVLNode<T>? {
+    private fun insert(node: AVLNode<T>?, value: T): AVLNode<T> {
         node ?: return AVLNode(value)
 
         if (value < node.value) {
@@ -73,6 +77,33 @@ class AVLTree<T: Comparable<T>> {
         }
         val balancedNode = balanced(node)
         balancedNode.height = max(balancedNode.leftHeight ?: 0, balancedNode.rightHeight ?: 0) + 1
+        return balancedNode
+    }
+
+    private fun remove(node: AVLNode<T>?, value: T): AVLNode<T>? {
+        node ?: return null
+
+        when {
+            value == node.value -> {
+                if (node.leftChild == null && node.rightChild == null) {
+                    return null
+                }
+                if (node.leftChild == null) {
+                    return node.rightChild
+                }
+                if (node.rightChild == null) {
+                    return node.leftChild
+                }
+                node.rightChild?.min?.value?.let {
+                    node.value = it
+                }
+                node.rightChild = remove(node.rightChild, node.value)
+            }
+            value < node.value -> node.leftChild = remove(node.leftChild, value)
+            else -> node.rightChild = remove(node.rightChild, value)
+        }
+        val balancedNode = balanced(node)
+        balancedNode.height = max(balancedNode.leftHeight, balancedNode.rightHeight) + 1
         return balancedNode
     }
 }
