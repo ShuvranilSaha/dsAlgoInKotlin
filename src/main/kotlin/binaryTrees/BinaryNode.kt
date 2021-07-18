@@ -84,4 +84,21 @@ class BinaryNode<T>(var value: T) {
     // fin min node in a tree
     val min: BinaryNode<T>
         get() = leftChild?.min ?: this
+
+    val isBinarySearchTree: Boolean
+        get() = isBst(this, min = null, max = null)
+
+    private fun isBst(tree: BinaryNode<T>?, min: T?, max: T?): Boolean {
+        tree ?: return true
+
+        if (min != null && tree.value <= min) {
+            // need to check
+            return false
+        } else if (max != null && tree.value > max) {
+            // need to check
+            return false
+        }
+
+        return isBst(tree.leftChild, min, tree.value) && isBst(tree.rightChild, tree.value, max)
+    }
 }
