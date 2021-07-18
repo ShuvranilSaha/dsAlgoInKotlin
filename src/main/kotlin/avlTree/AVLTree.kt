@@ -1,6 +1,7 @@
 package avlTree
 
 import kotlin.math.max
+import kotlin.math.pow
 
 
 class AVLTree<T : Comparable<T>> {
@@ -105,5 +106,28 @@ class AVLTree<T : Comparable<T>> {
         val balancedNode = balanced(node)
         balancedNode.height = max(balancedNode.leftHeight, balancedNode.rightHeight) + 1
         return balancedNode
+    }
+
+    /* challenge 1 : Count the leaves
+    How many leafNodes are there in perfectly balanced tree of height  3?
+     */
+    fun leafNodes(height: Int): Int {
+        return 2.0.pow(height).toInt()
+    }
+
+    /* challenge 2: Count the nodes
+    How many nodes are there in a perfectly balanced tree of height 3?
+     */
+    // Time Complexity is O(height)
+    fun countNodes(height: Int): Int {
+        var totalNodes = 0
+        (0..height).forEach {
+            totalNodes += 2.0.pow(it).toInt()
+        }
+        return totalNodes
+    }
+    // Time Complexity O(1)
+    fun countNodes2(height: Int): Int {
+        return 2.0.pow(height + 1).toInt() - 1
     }
 }
