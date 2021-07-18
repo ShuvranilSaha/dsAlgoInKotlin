@@ -4,7 +4,7 @@ import kotlin.math.max
 
 typealias Visitor<T> = (T) -> Unit
 
-class BinaryNode<T: Comparable<T>>(var value: T) {
+class BinaryNode<T>(var value: T) {
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
 
@@ -85,23 +85,6 @@ class BinaryNode<T: Comparable<T>>(var value: T) {
     val min: BinaryNode<T>
         get() = leftChild?.min ?: this
 
-    val isBinarySearchTree: Boolean
-        get() = isBst(this, min = null, max = null)
-
-    private fun isBst(tree: BinaryNode<T>?, min: T?, max: T?): Boolean {
-        tree ?: return true
-
-        if (min != null && tree.value <= min) {
-            // need to check
-            return false
-        } else if (max != null && tree.value > max) {
-            // need to check
-            return false
-        }
-
-        return isBst(tree.leftChild, min, tree.value) && isBst(tree.rightChild, tree.value, max)
-    }
-
     override fun equals(other: Any?): Boolean {
         return if (other != null && other is BinaryNode<*>) {
             this.value == other.value && this.leftChild == other.leftChild && this.rightChild == other.rightChild
@@ -111,11 +94,10 @@ class BinaryNode<T: Comparable<T>>(var value: T) {
     }
 
     override fun hashCode(): Int {
-        var result = value.hashCode()
+        var result = value?.hashCode() ?: 0
         result = 31 * result + (leftChild?.hashCode() ?: 0)
         result = 31 * result + (rightChild?.hashCode() ?: 0)
         result = 31 * result + min.hashCode()
-        result = 31 * result + isBinarySearchTree.hashCode()
         return result
     }
 }
