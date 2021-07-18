@@ -2,8 +2,8 @@ package binarySearchTrees
 
 import binaryTrees.BinaryNode
 
-class BinarySearchTree<T : Comparable<T>>() {
-    var root: BinaryNode<T>? = null
+class BinarySearchTree<T : Comparable<T>> {
+    private var root: BinaryNode<T>? = null
     override fun toString() = root?.toString() ?: "empty Tree"
 
     // Insert
@@ -76,14 +76,14 @@ class BinarySearchTree<T : Comparable<T>>() {
         }
         node.rightChild = remove(node.rightChild, node.value)
 
-//        node ?: return null
-//        when {
-//            value == node.value -> {
-//                // more to come
-//            }
-//            value < node.value -> node.leftChild = remove(node.leftChild, value)
-//            else -> node.rightChild = remove(node.rightChild, value)
-//        }
+        node ?: return null
+        when {
+            value == node.value -> {
+                // more to come
+            }
+            value < node.value -> node.leftChild = remove(node.leftChild, value)
+            else -> node.rightChild = remove(node.rightChild, value)
+        }
         return node
     }
 
