@@ -86,4 +86,16 @@ class BinarySearchTree<T : Comparable<T>>() {
 //        }
         return node
     }
+
+    fun contains(subTree: BinarySearchTree<T>): Boolean {
+        val set = mutableSetOf<T>()
+        root?.traverseInOrder {
+            set.add(it)
+        }
+        var isEqual = true
+        subTree.root?.traverseInOrder {
+            isEqual = isEqual && set.contains(it)
+        }
+        return isEqual
+    }
 }
